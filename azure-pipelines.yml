@@ -70,3 +70,12 @@ schedules:
       - master
       - releases/lastversion
     always: true
+
+resources:
+  pipelines:
+  - pipeline: securitylib   # Name of the pipeline resource
+    source: security-lib-ci # Name of the triggering pipeline
+    trigger: 
+      branches:
+      - releases/*
+      - master
