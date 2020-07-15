@@ -49,11 +49,13 @@ schedules:
     displayName: M-F 3:00 AM (UTC + 5:30) India daily build
     branches:
       include:
+      - master
       - features/india/*
   - cron: "0 8 * * Mon-Fri"
     displayName: M-F 3:00 AM (UTC - 5) NC daily build
     branches:
       include:
+      - master
       - features/nc/*
   - cron: "0 3 * * Mon-Fri"
     displayName: M-F 3:00 AM (UTC) daily build
@@ -65,5 +67,6 @@ schedules:
     displayName: Sunday 3:00 AM (UTC) weekly latest version build
     branches:
       include:
+      - master
       - releases/lastversion
     always: true
