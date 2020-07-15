@@ -4,7 +4,19 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- master
+  branches:
+    include:
+      - master
+      - releases/*
+      - feature/*
+    exclude:
+      - releases/old/*
+      - feature/-working
+  paths:
+    include:
+      - '*'
+    exclude:
+      - 'docs/*'
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -19,4 +31,15 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    jdkDirectory: 
+    mavenVersionOption: Default
+    mavenDirectory: 
+    mavenSetM2Home: false
+    mavenAuthenticateFeed: false
+    sonarQubeRunAnalysis: false
+    sqMavenPluginVersionChoice: latest
     goals: 'package'
+
+pr:
+  - master
+  - releases/*
